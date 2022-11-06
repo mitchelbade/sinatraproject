@@ -1,3 +1,3 @@
-[submodule "projectbackend"]
-    path = projectbackend
+[submodule "backend"]
+    path = backend
     url = https://github.com/mitchelbade/phase-3-sinatra-react-project/tree/projectbackend.git
