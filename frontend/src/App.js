@@ -1,24 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Home from './components/Home/Home'
+import NavBar from './components/Navigation/NavBar'
+import ModelsList from './components/VehicleModels/ModelsList'
+import ModelsEdit from './components/VehicleModels/ModelsEdit'
+import ModelsForm from './components/VehicleModels/ModelsForm'
+import ManufacturersList from './components/Manufacturers/ManufacturersList'
+import ManufacturersForm from './components/Manufacturers/ManufacturersForm'
+import { ManufacturersProvider } from './context/manufacturersContext'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <NavBar />
+      <Routes>
+        <Route path='/' element={<Home />} />
+      </Routes>
+
+      <ManufacturersProvider>
+        <Routes>
+          <Route exact path='/manufacturers' element={<ManufacturersList />} />
+          <Route path='/manufacturers/new' element={<ManufacturersForm />} />
+        </Routes>
+      </ManufacturersProvider>
+
+      <Routes>
+        <Route exact path='/models' element={<ModelsList />} />
+        <Route path='/models/new' element={<ModelsForm />} />
+        <Route path='/models/:id/edit' element={<ModelsEdit />} />
+      </Routes>
+    </Router>
   );
 }
 
