@@ -28,7 +28,28 @@ const VehiclesProvider = ({ children }) => {
         })
     }
 
-    return <VehiclesContext.Provider value={{ vehicles, addVehicle }}>{ children }</VehiclesContext.Provider>
+    const getVehicleById = (id) => {
+        return vehicles.find((vehicle) => vehicle.id === vehicle.id)
+    }
+
+    const editVehicle = vehicle => {
+        fetch(baseURL + `/vehicles/${vehicle.id}`, {
+            method: 'PATCH',
+            headers,
+            body: JSON.stringify(vehicle)
+        })
+        .then(r => r.json())
+        .then(data => {
+            setVehicles((prevState) => {
+                const edit = prevState.find((prevVehicle) => parseInt(vehicle.id) === prevVehicle.id)
+                const i = prevState.indexOf(edit)
+                prevState[i] = data
+                return [...prevState]
+            })
+        })
+    }
+
+    return <VehiclesContext.Provider value={{ vehicles, addVehicle, getVehicleById, editVehicle }}>{ children }</VehiclesContext.Provider>
 }
 
 export { VehiclesContext, VehiclesProvider }

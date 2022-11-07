@@ -30,7 +30,7 @@ function App() {
         <Routes>
           <Route exact path='/vehicles' element={<VehiclesList />} />
           <Route exact path='/vehicles/new' element={<VehiclesForm />} />
-          <Route path='/vehicles/:id/edit' element={<VehiclesEdit />} />
+          <Route path='/vehicles/:id' element={<VehiclesEdit />} />
         </Routes>
       </VehiclesProvider>
     </Router>

@@ -28,7 +28,21 @@ const ManufacturersProvider = ({ children }) => {
         })
     }
 
-    return <ManufacturersContext.Provider value={{ manufacturers, addManufacturer }}>{ children }</ManufacturersContext.Provider>
+    const deleteManufacturer = manufacturerId => {
+        fetch(baseURL + `/manufacturers/${manufacturerId}`, {
+            method: 'DELETE',
+            headers,
+        })
+        .then(r => r.json())
+        .then(data => {
+            setManufacturers((prevState) => {
+                return prevState.filter((manufacturer) => manufacturer.id !== manufacturerId)
+            })
+            navigate('/manufacturers');
+        })
+    }
+
+    return <ManufacturersContext.Provider value={{ manufacturers, addManufacturer, deleteManufacturer }}>{ children }</ManufacturersContext.Provider>
 }
 
 export { ManufacturersContext, ManufacturersProvider }
