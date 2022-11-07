@@ -26,7 +26,6 @@ const ManufacturersProvider = ({ children }) => {
             setManufacturers([...manufacturers, data])
             navigate('/manufacturers');
         })
-        
     }
 
     return <ManufacturersContext.Provider value={{ manufacturers, addManufacturer }}>{ children }</ManufacturersContext.Provider>

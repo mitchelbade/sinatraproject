@@ -9,8 +9,9 @@ const VehicleCard = ({ vehicle }) => {
         <Card variant="outlined" className='card'>
             <CardContent>
                 <h1>{ vehicle.name }</h1>
-                <p>Body type: { vehicle.body_type }</p>
+                <p>Manufacture: { vehicle.manufacturer?.name }</p>
                 <p>Year made: { vehicle.years_made }</p>
+                <p>Body type: { vehicle.body_type }</p>
                 <p>Description: { vehicle.description }</p>
             </CardContent>
         </Card>

@@ -9,6 +9,7 @@ import VehiclesForm from './components/Vehicles/VehiclesForm'
 import ManufacturersList from './components/Manufacturers/ManufacturersList'
 import ManufacturersForm from './components/Manufacturers/ManufacturersForm'
 import { ManufacturersProvider } from './context/manufacturersContext'
+import { VehiclesProvider } from './context/vehiclesContext';
 
 function App() {
   return (
@@ -25,11 +26,13 @@ function App() {
         </Routes>
       </ManufacturersProvider>
 
-      <Routes>
-        <Route exact path='/vehicles' element={<VehiclesList />} />
-        <Route path='/vehicles/new' element={<VehiclesForm />} />
-        <Route path='/vehicles/:id/edit' element={<VehiclesEdit />} />
-      </Routes>
+      <VehiclesProvider>
+        <Routes>
+          <Route exact path='/vehicles' element={<VehiclesList />} />
+          <Route exact path='/vehicles/new' element={<VehiclesForm />} />
+          <Route path='/vehicles/:id/edit' element={<VehiclesEdit />} />
+        </Routes>
+      </VehiclesProvider>
     </Router>
   );
 }
