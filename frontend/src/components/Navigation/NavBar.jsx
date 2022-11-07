@@ -42,15 +42,15 @@ const NavBar = () => {
                     <BottomNavigationAction label="Add Manufacturer" style={{ color: 'currentcolor' }} icon={<AddBoxOutlinedIcon style={{ color: 'currentcolor' }}/>} />
                 </NavLink>
                 <NavLink 
-                    to='/models'
+                    to='/vehicles'
                     style={({ isActive }) =>
-                        isActive && location.pathname === '/models' ? activeStyle : defaultStyle
+                        isActive && location.pathname === '/vehicles' ? activeStyle : defaultStyle
                     }
                 >
                     <BottomNavigationAction label="Vehicles" style={{ color: 'currentcolor' }} icon={<DirectionsCarOutlinedIcon style={{ color: 'currentcolor' }} />} />
                 </NavLink>
                 <NavLink 
-                    to='/models/new'
+                    to='/vehicles/new'
                     style={({ isActive }) =>
                         isActive ? activeStyle : defaultStyle
                     }

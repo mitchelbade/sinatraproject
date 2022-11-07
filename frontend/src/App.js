@@ -3,9 +3,9 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './components/Home/Home'
 import NavBar from './components/Navigation/NavBar'
-import ModelsList from './components/VehicleModels/ModelsList'
-import ModelsEdit from './components/VehicleModels/ModelsEdit'
-import ModelsForm from './components/VehicleModels/ModelsForm'
+import VehiclesList from './components/Vehicles/VehiclesList'
+import VehiclesEdit from './components/Vehicles/VehiclesEdit'
+import VehiclesForm from './components/Vehicles/VehiclesForm'
 import ManufacturersList from './components/Manufacturers/ManufacturersList'
 import ManufacturersForm from './components/Manufacturers/ManufacturersForm'
 import { ManufacturersProvider } from './context/manufacturersContext'
@@ -26,9 +26,9 @@ function App() {
       </ManufacturersProvider>
 
       <Routes>
-        <Route exact path='/models' element={<ModelsList />} />
-        <Route path='/models/new' element={<ModelsForm />} />
-        <Route path='/models/:id/edit' element={<ModelsEdit />} />
+        <Route exact path='/vehicles' element={<VehiclesList />} />
+        <Route path='/vehicles/new' element={<VehiclesForm />} />
+        <Route path='/vehicles/:id/edit' element={<VehiclesEdit />} />
       </Routes>
     </Router>
   );
